@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dino-Bot</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    
+  <style>
+    body{
+    background: #eee;
+    margin: 40px;
+  }
+  body, button, input{ 
+    font-family: Inter;
+  }
+  h1{
+    text-align: center;
+    color: #444;
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #fbfbfb;
+  }
+  .container{ 
+    max-width: 960px; 
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+  }
+  .name-form, .chat-form{ 
+    display: flex; 
+    justify-content: center;
+  }
+  input{ 
+    padding: 16px; 
+    font-size: 1.3em; 
+    margin-right: 10px; 
+    border: 1px solid #ddd; 
+    border-radius: 10px;
+  }
+  button{ 
+    font-size: 1.3em; 
+    padding: 16px; 
+    background: #006aee; 
+    color: white; 
+    border: 0; 
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .chat-list { 
+    padding: 0;
+  }
+  .chat-list li{ 
+    margin: 16px 0; 
+    list-style-type: none; 
+  }
+  .chat-list .name{ 
+    color: #006aee;
+    font-size: 1.4em; 
+    font-weight: bold; 
+  }
+  .chat-list .mssg{ 
+    font-size: 1.2em;
+    margin-top: 4px;
+  } 
+  .hidden{
+    display: none;
+  }
+  </style>
+</head>
+<body>
+    <h1>Hello Dino-Bot</h1>
+    <div class="container">
+        <h1>Dino-Chat</h1>
+        <form class="name-form">
+            <input type="text" name="nickname" placeholder="choose nickname" required>
+            <button>Enter Chat</button>
+        </form>
+
+        <div class="chatroom hidden">
+            <ul class="chat-list">
+              
+            </ul>
+            <form class="chat-form">
+                <input type="text" name="mssg" placeholder="type your message.." required>
+                <button>Send</button>
+            </form>
+            
+        </div>    
+
+    </div>
+
+    <script>
+
+
+        let ws = new WebSocket('ws://localhost:3000/ws');
+
+        const nameForm = document.querySelector('.name-form');
+        const chatroom = document.querySelector('.chatroom');
+        const chatList = document.querySelector('.chat-list');
+        const chatForm = document.querySelector('.chat-form');
+
+        let name = 'anonymous';
+
+
+        //enter chat with name
+        nameForm.addEventListener('submit',(e)=>{
+          e.preventDefault();
+
+          name=nameForm.nickname.value;
+
+          nameForm.classList.add('hidden');
+          chatroom.classList.remove('hidden');
+
+        });
+
+        //send new messages
+        chatForm.addEventListener('submit',(e)=>{
+          e.preventDefault();
+
+          let mssg=chatForm.mssg.value;
+          
+          ws.send(JSON.stringify({name,mssg}));  //({name:name,mssg:mssg})
+
+        })
+
+        //output event to DOM
+        const outputMessage= ({data})=>{
+          const {name,mssg}=JSON.parse(data);
+
+          let template=`  
+                  <li>
+                    <div class="name">${name}</div>
+                    <div class="mssg">${mssg}</div>
+                  </li>`;
+          chatList.innerHTML += template;
+        }
+
+        //listening to event
+        ws.addEventListener('message',outputMessage)
+    </script>
+</body>
+</html>
