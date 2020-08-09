@@ -31,3 +31,9 @@ A ChatBot built using Deno and Websockets.
    - serve  from "https://deno.land/std/http/server.ts"
    - v4     from "https://deno.land/std/uuid/mod.ts"
    - acceptWebSocket,acceptable from "https://deno.land/std/ws/mod.ts"
+   
+## ScreenShots   
+
+![Screenshot_2020-08-09 Dino-Bot](https://user-images.githubusercontent.com/51753810/89736831-073cf980-da8a-11ea-931f-dae23ade4f84.png)
+![Screenshot_2020-08-09 Dino-Bot(2)](https://user-images.githubusercontent.com/51753810/89736837-0f953480-da8a-11ea-8c33-111412a10b3f.png)
+![Screenshot_2020-08-09 Dino-Bot(1)](https://user-images.githubusercontent.com/51753810/89736841-115ef800-da8a-11ea-93cc-829180b82bb5.png)
