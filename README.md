@@ -3,6 +3,7 @@ A ChatBot built using Deno and Websockets.
 
 ## Deno ?
 <p>Deno is a JavaScript/TypeScript runtime with secure defaults and a great developer experience.It's built on V8, Rust, and Tokio.</p>
+<p><img src="https://www.freecodecamp.org/news/content/images/2020/05/Screen-Shot-2020-05-11-at-18.55.24.png"></p>
 
 ## Feature Highlights
 
@@ -13,6 +14,10 @@ A ChatBot built using Deno and Websockets.
    - Has a set of reviewed (audited) standard modules that are guaranteed to work with Deno.
    - Scripts can be bundled into a single JavaScript file.
 
+## Installing Deno
+   - Install chocolatey for windows.Chocolatey is a package manager which is used to allow you to version things, manage dependencies and installation order, better       inventory management, and other features.[Chocolatey](https://chocolatey.org/install)
+   - Now Install Deno from cmd `choco install deno`
+   
 
 ## WebSockets
 
