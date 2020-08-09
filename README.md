@@ -3,7 +3,7 @@ A ChatBot built using Deno and Websockets.
 
 ## Deno ?
 <p>Deno is a JavaScript/TypeScript runtime with secure defaults and a great developer experience.It's built on V8, Rust, and Tokio.</p>
-<p><img src="https://www.freecodecamp.org/news/content/images/2020/05/Screen-Shot-2020-05-11-at-18.55.24.png"></p>
+<p><img src="https://www.freecodecamp.org/news/content/images/2020/05/Screen-Shot-2020-05-11-at-18.55.24.png" height="250"></p>
 
 ## Feature Highlights
 
